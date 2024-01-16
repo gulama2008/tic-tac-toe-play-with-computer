@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { GameContext } from '../../context/GameContextProvider';
-
+import styles from "./GameOptions.module.scss";
 const GameOptions = () => {
     const {
       gameOption,
@@ -23,9 +23,13 @@ const GameOptions = () => {
     };
     console.log(gameOption);
   return (
-    <div>
-      <div onClick={handleClickPVP}>PVP</div>
-      <div onClick={handleClickPVC}>PVC</div>
+    <div className={styles.container}>
+      <button onClick={handleClickPVP} className={styles.option}>
+        PVP
+      </button>
+      <button onClick={handleClickPVC} className={styles.option}>
+        PVC
+      </button>
     </div>
   );
 }

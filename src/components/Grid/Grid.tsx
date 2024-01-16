@@ -14,7 +14,15 @@ const Grid = ({ gridValue, index }: GridProps) => {
     setIsXTurn,
     setIsXWon,
     setIsOWon,
+    isFinish,
+    setIsFinish,
   } = useContext(GameContext);
+  let gridClass = styles.container;
+  if (gridValue=="X") {
+    gridClass += ` ${styles.x}`
+  } else { 
+    gridClass+=` ${styles.o}`
+  }
   const handleClick = () => {
     const newArr = [...gridValues];
     if (isXTurn) {
@@ -29,26 +37,26 @@ const Grid = ({ gridValue, index }: GridProps) => {
     if (
       (newArr[0] == newArr[1] &&
         newArr[1] == newArr[2] &&
-        newArr[0] !== "test") ||
+        newArr[0] !== " ") ||
       (newArr[3] == newArr[4] &&
         newArr[4] == newArr[5] &&
-        newArr[3] !== "test") ||
+        newArr[3] !== " ") ||
       (newArr[6] == newArr[7] &&
         newArr[7] == newArr[8] &&
-        newArr[6] !== "test") ||
+        newArr[6] !== " ") ||
       (newArr[0] == newArr[3] &&
         newArr[3] == newArr[6] &&
-        newArr[0] !== "test") ||
+        newArr[0] !== " ") ||
       (newArr[1] == newArr[4] &&
         newArr[4] == newArr[7] &&
-        newArr[1] !== "test") ||
+        newArr[1] !== " ") ||
       (newArr[2] == newArr[5] &&
         newArr[5] == newArr[8] &&
-        newArr[2] !== "test") ||
+        newArr[2] !== " ") ||
       (newArr[0] == newArr[4] &&
         newArr[4] == newArr[8] &&
-        newArr[0] !== "test") ||
-      (newArr[2] == newArr[4] && newArr[4] == newArr[6] && newArr[2] !== "test")
+        newArr[0] !== " ") ||
+      (newArr[2] == newArr[4] && newArr[4] == newArr[6] && newArr[2] !== " ")
     ) {
 
       if (isXTurn) {
@@ -56,10 +64,11 @@ const Grid = ({ gridValue, index }: GridProps) => {
       } else {
         setIsOWon(true);
       }
+      setIsFinish(true);
     }
   };
   return (
-    <div className={styles.container} onClick={handleClick}>
+    <div className={gridClass} onClick={handleClick}>
       {gridValue}
     </div>
   );

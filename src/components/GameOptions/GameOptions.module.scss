@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    gap: 20px;
+}
+.option{
+    height: 100px;
+    width: 200px;
+    background-color: #1d2c37;
+    color: #75b7a7;
+    font-size: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
