@@ -7,10 +7,12 @@ function App() {
 
   return (
     <GameContextProvider>
-      <div className='header'>Tic Tac Toe</div>
-      <GameOptionsContainer/>
+      <div className="header">
+        Tic <span className='tac'>Tac</span> Toe
+      </div>
+      <GameOptionsContainer />
     </GameContextProvider>
-  )
+  );
 }
 
 export default App

@@ -14,6 +14,8 @@ const PVPGridContainer = () => {
     setIsOWon,
     isFinish,
     setIsFinish,
+    isDraw,
+    setIsDraw,
   } = useContext(GameContext);
   let gridContainerClass = styles.grid_container;
   if (isFinish) {
@@ -29,6 +31,7 @@ const PVPGridContainer = () => {
 
       {isXWon && <div className={styles.won}>X WON!</div>}
       {isOWon && <div className={styles.won}>O WON!</div>}
+      {isDraw && <div className={styles.won}>DRAW!</div>}
       {isFinish && <GameFinishOptions />}
     </div>
   );

@@ -16,12 +16,14 @@ const Grid = ({ gridValue, index }: GridProps) => {
     setIsOWon,
     isFinish,
     setIsFinish,
+    isDraw,
+    setIsDraw,
   } = useContext(GameContext);
   let gridClass = styles.container;
-  if (gridValue=="X") {
-    gridClass += ` ${styles.x}`
-  } else { 
-    gridClass+=` ${styles.o}`
+  if (gridValue == "X") {
+    gridClass += ` ${styles.x}`;
+  } else {
+    gridClass += ` ${styles.o}`;
   }
   const handleClick = () => {
     const newArr = [...gridValues];
@@ -35,35 +37,23 @@ const Grid = ({ gridValue, index }: GridProps) => {
     setIsXTurn(!isXTurn);
 
     if (
-      (newArr[0] == newArr[1] &&
-        newArr[1] == newArr[2] &&
-        newArr[0] !== " ") ||
-      (newArr[3] == newArr[4] &&
-        newArr[4] == newArr[5] &&
-        newArr[3] !== " ") ||
-      (newArr[6] == newArr[7] &&
-        newArr[7] == newArr[8] &&
-        newArr[6] !== " ") ||
-      (newArr[0] == newArr[3] &&
-        newArr[3] == newArr[6] &&
-        newArr[0] !== " ") ||
-      (newArr[1] == newArr[4] &&
-        newArr[4] == newArr[7] &&
-        newArr[1] !== " ") ||
-      (newArr[2] == newArr[5] &&
-        newArr[5] == newArr[8] &&
-        newArr[2] !== " ") ||
-      (newArr[0] == newArr[4] &&
-        newArr[4] == newArr[8] &&
-        newArr[0] !== " ") ||
+      (newArr[0] == newArr[1] && newArr[1] == newArr[2] && newArr[0] !== " ") ||
+      (newArr[3] == newArr[4] && newArr[4] == newArr[5] && newArr[3] !== " ") ||
+      (newArr[6] == newArr[7] && newArr[7] == newArr[8] && newArr[6] !== " ") ||
+      (newArr[0] == newArr[3] && newArr[3] == newArr[6] && newArr[0] !== " ") ||
+      (newArr[1] == newArr[4] && newArr[4] == newArr[7] && newArr[1] !== " ") ||
+      (newArr[2] == newArr[5] && newArr[5] == newArr[8] && newArr[2] !== " ") ||
+      (newArr[0] == newArr[4] && newArr[4] == newArr[8] && newArr[0] !== " ") ||
       (newArr[2] == newArr[4] && newArr[4] == newArr[6] && newArr[2] !== " ")
     ) {
-
       if (isXTurn) {
         setIsXWon(true);
       } else {
         setIsOWon(true);
       }
+      setIsFinish(true);
+    } else if (!newArr.includes(" ")) {
+      setIsDraw(true);
       setIsFinish(true);
     }
   };
