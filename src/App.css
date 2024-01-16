@@ -42,3 +42,10 @@
 .read-the-docs {
   color: #888;
 }
+
+.header{
+  font-size: 50px;
+  font-weight: 700;
+  color: #6afdd2;
+  margin-bottom: 20px;
+}

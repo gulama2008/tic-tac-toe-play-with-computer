@@ -28,7 +28,12 @@ const GameFinishOptions = () => {
         setGridValues(arr)
     }
     const handleNewGame=() => {
-        
+        let arr = new Array(9).fill(" ");
+        setGridValues(arr);
+        setIsOWon(false);
+        setIsXWon(false);
+        setIsFinish(false);
+        setIsXTurn(true);
     }
     return (
       <div className={styles.container}>

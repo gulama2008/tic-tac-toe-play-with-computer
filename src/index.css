@@ -49,6 +49,7 @@ button {
 }
 button:hover {
   border-color: #646cff;
+  color: #6afdd2;
 }
 button:focus,
 button:focus-visible {

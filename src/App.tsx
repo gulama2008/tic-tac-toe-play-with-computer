@@ -7,7 +7,7 @@ function App() {
 
   return (
     <GameContextProvider>
-      <div>Tic Tac Toe</div>
+      <div className='header'>Tic Tac Toe</div>
       <GameOptionsContainer/>
     </GameContextProvider>
   )
