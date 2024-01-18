@@ -40,13 +40,9 @@ export class GameService {
         }
         return a;
       }, 0);
-        console.log(num);
-        console.log(num == 2 && e.includes(" "));
-        
       return num == 2 && e.includes(" ");
     });
-      console.log(winArrIndex);
-      console.log(winArrIndex == -1 ? -1 : indexArr[winArrIndex]);
+      
       
     return winArrIndex == -1 ? -1 : indexArr[winArrIndex];
   }
@@ -61,4 +57,8 @@ export class GameService {
           }
         }
     }
+  
+  public static cTurnWhenPInCorner() { 
+    
+  }
 }

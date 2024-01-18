@@ -26,49 +26,50 @@ const GridForPvC = ({ gridValue, index }: GridProps) => {
     gridClass += ` ${styles.o}`;
   }
   const handleClick = (e: any) => {
+    let oTurn = false;
     if (e.target.textContent == " ") {
-      console.log("test if here1");
       const newArr = [...gridValues];
       if (isXTurn) {
-        console.log("test if here2");
         newArr[index] = "X";
         setGridValues(newArr);
         setIsXTurn(!isXTurn);
-        const winLineIndexForC = GameService.checkIfCanWin(newArr, "O");
-
-        console.log(winLineIndexForC);
-        if (winLineIndexForC !== -1) {
-          console.log("test if here3");
-          const newArr2 = newArr;
-          for (let i = 0; i < 3; i++) {
-            if (newArr2[winLineIndexForC[i]] == " ") {
-              console.log("test if here4");
-              newArr2[winLineIndexForC[i]] = "O";
-              setGridValues(newArr2);
-              setIsXTurn(isXTurn);
-            }
-          }
-
-          // GameService.cTurnWithTwoSame(gridValues, winLineIndexForC, setGridValues());
-        } else {
-          console.log("test if here5");
-
-          const winLineIndexForP = GameService.checkIfCanWin(newArr, "X");
-          if (winLineIndexForP !== -1) {
-            console.log("test if here6");
-            const newArr3 = newArr;
-            for (let i = 0; i < 3; i++) {
-              if (newArr3[winLineIndexForP[i]] == " ") {
-                console.log("test if here7");
-                newArr3[winLineIndexForP[i]] = "O";
-                setGridValues(newArr3);
-                setIsXTurn(isXTurn);
+        if (index == 0 || index == 2 || index == 6 || index == 8) {
+          console.log("test if in corner");
+          if (newArr[4] == " ") {
+            newArr[4] = "O";
+            setGridValues(newArr);
+            setIsXTurn(isXTurn);
+          } else {
+            const winLineIndexForC = GameService.checkIfCanWin(newArr, "O");
+            if (winLineIndexForC !== -1) {
+              const newArrForC = newArr;
+              for (let i = 0; i < 3; i++) {
+                if (newArrForC[winLineIndexForC[i]] == " ") {
+                  newArrForC[winLineIndexForC[i]] = "O";
+                  setGridValues(newArrForC);
+                  setIsXTurn(isXTurn);
+                  oTurn = true;
+                }
+              }
+            } else {
+              const winLineIndexForP = GameService.checkIfCanWin(newArr, "X");
+              if (winLineIndexForP !== -1) {
+                const newArrForC = newArr;
+                for (let i = 0; i < 3; i++) {
+                  if (newArrForC[winLineIndexForP[i]] == " ") {
+                    newArrForC[winLineIndexForP[i]] = "O";
+                    setGridValues(newArrForC);
+                    setIsXTurn(isXTurn);
+                    oTurn = true;
+                  }
+                }
               }
             }
           }
+        } else {
+          
         }
       } else {
-        console.log("test if here8");
         newArr[index] = "O";
         setGridValues(newArr);
         setIsXTurn(!isXTurn);
@@ -98,7 +99,9 @@ const GridForPvC = ({ gridValue, index }: GridProps) => {
           newArr[0] !== " ") ||
         (newArr[2] == newArr[4] && newArr[4] == newArr[6] && newArr[2] !== " ")
       ) {
-        if (isXTurn) {
+        if (oTurn) {
+          setIsOWon(true);
+        } else if (isXTurn) {
           setIsXWon(true);
         } else {
           setIsOWon(true);
