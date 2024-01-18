@@ -33,41 +33,39 @@ const GridForPvC = ({ gridValue, index }: GridProps) => {
         newArr[index] = "X";
         setGridValues(newArr);
         setIsXTurn(!isXTurn);
-        if (index == 0 || index == 2 || index == 6 || index == 8) {
-          console.log("test if in corner");
-          if (newArr[4] == " ") {
-            newArr[4] = "O";
-            setGridValues(newArr);
-            setIsXTurn(isXTurn);
+        if (
+          (index == 0 || index == 2 || index == 6 || index == 8) &&
+          newArr[4] == " "
+        ) {
+          newArr[4] = "O";
+          setGridValues(newArr);
+          setIsXTurn(isXTurn);
+        } else {
+          const winLineIndexForC = GameService.checkIfCanWin(newArr, "O");
+          if (winLineIndexForC !== -1) {
+            const newArrForC = newArr;
+            for (let i = 0; i < 3; i++) {
+              if (newArrForC[winLineIndexForC[i]] == " ") {
+                newArrForC[winLineIndexForC[i]] = "O";
+                setGridValues(newArrForC);
+                setIsXTurn(isXTurn);
+                oTurn = true;
+              }
+            }
           } else {
-            const winLineIndexForC = GameService.checkIfCanWin(newArr, "O");
-            if (winLineIndexForC !== -1) {
+            const winLineIndexForP = GameService.checkIfCanWin(newArr, "X");
+            if (winLineIndexForP !== -1) {
               const newArrForC = newArr;
               for (let i = 0; i < 3; i++) {
-                if (newArrForC[winLineIndexForC[i]] == " ") {
-                  newArrForC[winLineIndexForC[i]] = "O";
+                if (newArrForC[winLineIndexForP[i]] == " ") {
+                  newArrForC[winLineIndexForP[i]] = "O";
                   setGridValues(newArrForC);
                   setIsXTurn(isXTurn);
                   oTurn = true;
                 }
               }
-            } else {
-              const winLineIndexForP = GameService.checkIfCanWin(newArr, "X");
-              if (winLineIndexForP !== -1) {
-                const newArrForC = newArr;
-                for (let i = 0; i < 3; i++) {
-                  if (newArrForC[winLineIndexForP[i]] == " ") {
-                    newArrForC[winLineIndexForP[i]] = "O";
-                    setGridValues(newArrForC);
-                    setIsXTurn(isXTurn);
-                    oTurn = true;
-                  }
-                }
-              }
             }
           }
-        } else {
-          
         }
       } else {
         newArr[index] = "O";
