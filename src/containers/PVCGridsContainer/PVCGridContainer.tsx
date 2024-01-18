@@ -3,6 +3,8 @@ import GameFinishOptions from "../../components/GameFinishOptions/GameFinishOpti
 import Grid from "../../components/Grid/Grid";
 import { GameContext } from "../../context/GameContextProvider";
 import styles from "./PVCGridContainer.module.scss"
+import { GameService } from "../../services/gameService";
+import GridForPvC from "../../components/GridForPvC/GridForPvC";
 
 const PVCGridContainer = () => {
   const {
@@ -20,17 +22,46 @@ const PVCGridContainer = () => {
   if (isFinish) {
     gridContainerClass += ` ${styles.is_disabled}`;
   }
-  useEffect(() => { 
-    if (!isXTurn) { 
+  // useEffect(() => { 
+  //   console.log(isXTurn);
+    
+    
+  //   if (!isXTurn) { 
       
-    }
-  },isXTurn)
+  //     const winLineIndexForC = GameService.checkIfCanWin(gridValues, "O");
+      
+  //     console.log(winLineIndexForC);
+  //     if (winLineIndexForC !== -1) {
+  //       const newArr = gridValues;
+  //       for (let i = 0; i < 3; i++) {
+  //         if (newArr[winLineIndexForC[i]] == " ") {
+  //           newArr[winLineIndexForC[i]] == "O";
+  //           setGridValues(newArr);
+  //           return;
+  //         }
+  //       }
+  //       // GameService.cTurnWithTwoSame(gridValues, winLineIndexForC, setGridValues());
+  //     } else {
+  //       const winLineIndexForP = GameService.checkIfCanWin(gridValues, "X");
+  //       if (winLineIndexForP !== -1) {
+  //         const newArr = gridValues;
+  //         for (let i = 0; i < 3; i++) {
+  //           if (newArr[winLineIndexForP[i]] == " ") {
+  //             newArr[winLineIndexForP[i]] == "O";
+  //             setGridValues(newArr);
+  //             return;
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // },[isXTurn])
   return (
     <div>
       <div className={styles.container}>
         <div className={gridContainerClass}>
           {gridValues.map((gridValue: string, index: number) => {
-            return <Grid gridValue={gridValue} key={index} index={index} />;
+            return <GridForPvC gridValue={gridValue} key={index} index={index} />;
           })}
         </div>
 
