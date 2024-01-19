@@ -57,15 +57,106 @@ const GridForPvC = ({ gridValue, index }: GridProps) => {
               }
             }
           } else {
-            if (
-              (index == 0 || index == 2 || index == 6 || index == 8) &&
-              newArr[4] == " "
-            ) {
-              newArr[4] = "O";
+            //check if player put on corner, if middle is empty then computer put in the middle, if not empty then check if the opposite of the corner is occupied, if not then computer put there, otherwise put on the side
+            if (index == 0 || index == 2 || index == 6 || index == 8) {
+              if (newArr[4] == " ") {
+                newArr[4] = "O";
+                setGridValues(newArr);
+                setIsXTurn(isXTurn);
+              } else {
+                if (index == 0 && newArr[8] == " ") {
+                  newArr[8] = "O";
+                  setGridValues(newArr);
+                  setIsXTurn(isXTurn);
+                } else if (index == 2 && newArr[6] == " ") {
+                  newArr[6] = "O";
+                  setGridValues(newArr);
+                  setIsXTurn(isXTurn);
+                } else if (index == 6 && newArr[2] == " ") {
+                  newArr[2] = "O";
+                  setGridValues(newArr);
+                  setIsXTurn(isXTurn);
+                } else if (index == 8 && newArr[0] == " ") {
+                  newArr[0] = "O";
+                  setGridValues(newArr);
+                  setIsXTurn(isXTurn);
+                } else if (
+                  (index == 0 && newArr[8] == "X") ||
+                  (index == 2 && newArr[6] == "X") ||
+                  (index == 6 && newArr[2] == "X") ||
+                  (index == 8 && newArr[0] == "X")
+                ) {
+                  for (let i = 1; i <= 7; i += 2) {
+                    if (newArr[i] == " ") {
+                      newArr[i] = "O";
+                      setGridValues(newArr);
+                      setIsXTurn(isXTurn);
+                      return;
+                    }
+                  }
+                }
+              }
+            } else if (index == 4) {
+              //p can put in the middle means middle is empty and p never put in the corner, otherwise c will be already put in the middle if p ever put in the corner
+              newArr[0] = "O";
               setGridValues(newArr);
               setIsXTurn(isXTurn);
             } else {
-
+              console.log("check if on side");
+              
+              // situations when p put on the side, c consider middle first, if not empty then c should put in the corner of the same side of p
+              if ((newArr[4] == " ")) {
+                newArr[4] = "O";
+                setGridValues(newArr);
+                setIsXTurn(isXTurn);
+              } else { 
+                if (index == 1) {
+                  if (newArr[0] == " ") {
+                    newArr[0] = "O";
+                    setGridValues(newArr);
+                    setIsXTurn(isXTurn);
+                  } else if (newArr[2] == " ") {
+                    newArr[2] = "O";
+                    setGridValues(newArr);
+                    setIsXTurn(isXTurn);
+                  }
+                } else if (index == 3) {
+                  if ((newArr[0] == " ")) {
+                    console.log("testtesttest");
+                    
+                    newArr[0] = "O";
+                    setGridValues(newArr);
+                    setIsXTurn(isXTurn);
+                  } else if ((newArr[6] == " ")) {
+                    newArr[6] = "O";
+                    setGridValues(newArr);
+                    setIsXTurn(isXTurn);
+                  }
+                } else if (index == 5) {
+                  if ((newArr[2] == " ")) {
+                    newArr[2] = "O";
+                    setGridValues(newArr);
+                    setIsXTurn(isXTurn);
+                  } else if ((newArr[8] == " ")) {
+                    newArr[8] = "O";
+                    setGridValues(newArr);
+                    setIsXTurn(isXTurn);
+                  }
+                } else { 
+                  console.log("p=7");
+                  
+                  if ((newArr[6] == " ")) {
+                    newArr[6] = "O";
+                    setGridValues(newArr);
+                    setIsXTurn(isXTurn);
+                  } else if ((newArr[8] == " ")) {
+                    console.log("8 is empty");
+                    newArr[8] = "O";
+                    setGridValues(newArr);
+                    setIsXTurn(isXTurn);
+                  }
+                }
+              }
             }
           }
         }

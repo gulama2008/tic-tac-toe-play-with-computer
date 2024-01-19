@@ -58,7 +58,5 @@ export class GameService {
         }
     }
   
-  public static cTurnWhenPInCorner() { 
-    
-  }
+  
 }
