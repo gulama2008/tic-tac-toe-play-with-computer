@@ -2,6 +2,8 @@
 
 This is a tic-tac-toe game that allows players to play with another player or play with the computer
 
+### 🚀 [Launch Live Game](https://tic-tac-toe-pvc.netlify.app/)
+
 ## Table of Contents
 
 - [Snippets](#snippets)
