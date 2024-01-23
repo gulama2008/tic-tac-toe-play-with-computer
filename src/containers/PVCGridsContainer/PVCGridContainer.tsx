@@ -1,22 +1,15 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import GameFinishOptions from "../../components/GameFinishOptions/GameFinishOptions";
-import Grid from "../../components/Grid/Grid";
 import { GameContext } from "../../context/GameContextProvider";
 import styles from "./PVCGridContainer.module.scss";
-import { GameService } from "../../services/gameService";
 import GridForPvC from "../../components/GridForPvC/GridForPvC";
 
 const PVCGridContainer = () => {
   const {
     gridValues,
-    setGridValues,
     isXWon,
-    setIsXWon,
     isOWon,
-    setIsOWon,
     isFinish,
-    setIsFinish,
-    isXTurn,
     isDraw,
   } = useContext(GameContext);
   let gridContainerClass = styles.grid_container;

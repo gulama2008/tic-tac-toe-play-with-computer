@@ -7,15 +7,10 @@ import styles from "./PVPGridContainer.module.scss"
 const PVPGridContainer = () => {
   const {
     gridValues,
-    setGridValues,
     isXWon,
-    setIsXWon,
     isOWon,
-    setIsOWon,
     isFinish,
-    setIsFinish,
     isDraw,
-    setIsDraw,
   } = useContext(GameContext);
   let gridContainerClass = styles.grid_container;
   if (isFinish) {

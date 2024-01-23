@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { GameContext } from "../../context/GameContextProvider";
 import styles from "./GridForPvC.module.scss";
 import { GameService } from "../../services/gameService";
@@ -14,9 +14,7 @@ const GridForPvC = ({ gridValue, index }: GridProps) => {
     setIsXTurn,
     setIsXWon,
     setIsOWon,
-    isFinish,
     setIsFinish,
-    isDraw,
     setIsDraw,
   } = useContext(GameContext);
   let gridClass = styles.container;

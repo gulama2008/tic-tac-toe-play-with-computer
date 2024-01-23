@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import  { useContext } from "react";
 import { GameContext } from "../../context/GameContextProvider";
 import GameOptions from "../../components/GameOptions/GameOptions";
 import PVPGridContainer from "../PVPGridsContainer/PVPGridContainer";

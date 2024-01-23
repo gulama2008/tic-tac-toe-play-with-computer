@@ -1,16 +1,12 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { GameContext } from "../../context/GameContextProvider";
 import styles from "./GameFinishOptions.module.scss";
 const GameFinishOptions = () => {
   const {
-    gridValues,
     setGridValues,
     setIsXTurn,
-    isXWon,
     setIsXWon,
-    isOWon,
     setIsOWon,
-    isFinish,
     setIsDraw,
     setIsFinish,
     setShowPVPGame,

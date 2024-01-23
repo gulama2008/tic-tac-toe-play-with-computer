@@ -14,9 +14,7 @@ const Grid = ({ gridValue, index }: GridProps) => {
     setIsXTurn,
     setIsXWon,
     setIsOWon,
-    isFinish,
     setIsFinish,
-    isDraw,
     setIsDraw,
   } = useContext(GameContext);
   let gridClass = styles.container;

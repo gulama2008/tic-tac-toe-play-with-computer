@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { GameContext } from '../../context/GameContextProvider';
 import styles from "./GameOptions.module.scss";
 const GameOptions = () => {
